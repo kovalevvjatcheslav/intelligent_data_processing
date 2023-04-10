@@ -1,0 +1,15 @@
+services:
+
+  jupiter:
+    image: base_ml
+    entrypoint: jupyter-lab --allow-root --ip=0.0.0.0
+    volumes:
+      - ./notebooks:/notebooks
+    ports:
+      - "8888:8888"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [ "gpu" ]
+              driver: nvidia
